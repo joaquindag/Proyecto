@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+    <ion-title>inicioSesion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="controlForm" *ngFor="let item of nombreControles" >
+    <ion-item>
+    <ion-label>{{item}}</ion-label>
+      <ion-input [formControlName]=item></ion-input>
+    </ion-item>
+    <ion-item *ngIf="inicioSesionService.validateControl(item)">
+      <ion-label>
+        {{inicioSesionService.getErrorMessage(item)}}
+      </ion-label>       
+    </ion-item>
+  </form>
+
+  
+
+  <ion-item *ngIf="inicioSesionService.validateAllControl()">
+<ion-button (click)="getLogin()">Verificar Datos</ion-button>
+    <div *ngIf="bandera">
+      <ion-button (click)="pageNavigator('pagina-principal')" (click)="guardarNick()">Enviar</ion-button>
+    </div>
+    <ion-item *ngIf="incorrecto">El usuario o pass es incorrecto</ion-item>
+   </ion-item>
+</ion-content>

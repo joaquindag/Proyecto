@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Proyecto A
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <br>
+  <div style="width: 100%; text-align: center;">Bienvenido al Proyecto A</div>
+  <br>
+  <div style="width: 100%; text-align: center;">
+    <ion-button block color="primary" (click)="pageNavigator('inicio-sesion')">Iniciar sesion</ion-button>
+  </div>
+  <div style="width: 100%; text-align: center;">
+    <ion-button block color="primary" (click)="pageNavigator('registro')">Registrarse</ion-button>
+  </div>
+</ion-content>

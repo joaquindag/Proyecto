@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="controlForm" *ngFor="let item of nombreControles" >
+    <ion-item>
+    <ion-label>{{item}}</ion-label>
+      <ion-input [formControlName]=item></ion-input>
+    </ion-item>
+    <ion-item *ngIf="registroService.validateControl(item)">
+      <ion-label>
+        {{registroService.getErrorMessage(item)}}
+      </ion-label>       
+    </ion-item>
+  </form>
+  <ion-item *ngIf="registroService.validateAllControl()">
+    <ion-button (click)="getVerifyNickCorreo()">Verificar Datos</ion-button>
+    <div *ngIf="bandera">
+      <ion-button (click)="crearUser()" (click)="pageNavigator('home')" >Enviar</ion-button>
+    </div>
+    <ion-item *ngIf="incorrecto">El nick o correo esta registrado ya</ion-item>
+  </ion-item>
+</ion-content>

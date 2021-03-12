@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>agregarAmigos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar placeholder="Busqueda por Nick" (ionInput)="getItems($event)"></ion-searchbar>
+
+  <ion-list inset>
+    <ion-button ion-item *ngFor="let datos of items" (click)="presentActionSheet(datos.Nick)">
+      {{datos.Nick}}
+    </ion-button>
+
+
+  </ion-list>
+
+
+</ion-content>
